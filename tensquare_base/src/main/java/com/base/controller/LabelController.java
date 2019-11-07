@@ -3,9 +3,12 @@ package com.base.controller;
 import entity.Result;
 import entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import com.base.pojo.Label;
 import com.base.service.LabelService;
+
+import java.util.List;
 
 @CrossOrigin            // 跨域
 @RestController
@@ -40,14 +43,20 @@ public class LabelController {
 
   @PutMapping("{lableId}")
   public Result update(@PathVariable("lableId") String id, @RequestBody Label label) {
-//    label.setId(id);
     labelService.update(label);
     return new Result(true, StatusCode.OK, "修改成功");
   }
 
 
-//  @PostMapping("/search")
-//  public Result findSearch(@RequestBody Label label){
-//    List<Label> labels = labelService.findSearch(label);
-//  }
+  @PostMapping("/search")
+  public Result findSearch(@RequestBody Label label){
+    List<Label> labels = labelService.findSearch(label);
+    return new Result(true,StatusCode.OK,"查询成功",labels);
+  }
+
+  @PostMapping("/search/{page}/{size}")
+  public Result pageQuery(@RequestBody Label label,@PathVariable("page") int currentPage,@PathVariable("size") int pageSize){
+    Page<Label> pageData = labelService.pageQuery(label,currentPage,pageSize);
+    return new Result(true,StatusCode.OK,"查询成功",pageData.getContent());
+  }
 }
