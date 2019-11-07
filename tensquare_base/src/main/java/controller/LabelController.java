@@ -40,7 +40,7 @@ public class LabelController {
 
   @PutMapping("{lableId}")
   public Result update(@PathVariable("lableId") String id, @RequestBody Label label) {
-    label.setId(id);
+//    label.setId(id);
     labelService.update(label);
     return new Result(true, StatusCode.OK, "修改成功");
   }
