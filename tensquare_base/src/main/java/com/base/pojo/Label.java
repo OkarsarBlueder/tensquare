@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Label implements Serializable {
   @Id
   private String id;
-  private String labelName;
+  private String labelname;
   private String state;
   private Long count;
   private Long fans;
