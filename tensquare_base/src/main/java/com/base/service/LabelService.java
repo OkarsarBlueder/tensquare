@@ -1,9 +1,9 @@
-package service;
+package com.base.service;
 
-import dao.LabelDao;
+import com.base.dao.LabelDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pojo.Label;
+import com.base.pojo.Label;
 import utils.IdWorker;
 
 import javax.transaction.Transactional;

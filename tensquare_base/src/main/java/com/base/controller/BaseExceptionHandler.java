@@ -1,4 +1,4 @@
-package controller;
+package com.base.controller;
 
 import entity.Result;
 import entity.StatusCode;

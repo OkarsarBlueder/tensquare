@@ -1,14 +1,13 @@
-package controller;
+package com.base.controller;
 
 import entity.Result;
 import entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pojo.Label;
-import service.LabelService;
+import com.base.pojo.Label;
+import com.base.service.LabelService;
 
-import java.util.List;
-
+@CrossOrigin            // 跨域
 @RestController
 @RequestMapping("/label")
 public class LabelController {
