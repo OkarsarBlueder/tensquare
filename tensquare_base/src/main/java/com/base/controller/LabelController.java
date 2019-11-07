@@ -34,6 +34,7 @@ public class LabelController {
 
   @PostMapping
   public Result save(@RequestBody Label label) {
+    labelService.save(label);
     return new Result(true, StatusCode.OK, "添加成功");
   }
 

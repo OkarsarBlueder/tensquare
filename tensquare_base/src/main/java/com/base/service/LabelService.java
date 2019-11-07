@@ -27,7 +27,7 @@ public class LabelService {
     return labelDao.findById(Id).get();
   }
 
-  public void add(Label label){
+  public void save(Label label){
     label.setId(idWorker.nextId()+"");
     labelDao.save(label);
   }
