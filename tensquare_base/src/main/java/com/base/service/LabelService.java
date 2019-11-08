@@ -14,6 +14,7 @@ import javax.persistence.criteria.Predicate;
 import javax.transaction.Transactional;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -52,15 +53,15 @@ public class LabelService {
   }
 
 
-  private Specification<Label> searchMap(Label label){
+  private Specification<Label> searchMap(Map label){
     return (Specification<Label>)(root,query,cb)->{
       List<Predicate> list = new LinkedList<>();
-      if(!StringUtils.isEmpty(label.getLabelname())){
-        Predicate labelname = cb.like(root.get("labelname").as(String.class),"%"+label.getLabelname()+"%");
+      if(!StringUtils.isEmpty(label.get("labelname"))){
+        Predicate labelname = cb.like(root.get("labelname").as(String.class),"%"+label.get("labelname")+"%");
         list.add(labelname);
       }
-      if(!StringUtils.isEmpty(label.getState())){
-        Predicate state = cb.like(root.get("state").as(String.class),label.getState());
+      if(!StringUtils.isEmpty(label.get("state"))){
+        Predicate state = cb.equal(root.get("state").as(String.class),label.get("state"));
         list.add(state);
       }
       Predicate[] array = new Predicate[list.size()];
@@ -68,11 +69,11 @@ public class LabelService {
     };
   }
 
-  public List<Label> findSearch(final Label label){
+  public List<Label> findSearch(final Map label){
     return labelDao.findAll(searchMap(label));
   }
 
-  public Page<Label> pageQuery(Label label,int currentPage,int pageSize){
+  public Page<Label> pageQuery(Map label,int currentPage,int pageSize){
     return labelDao.findAll(searchMap(label), PageRequest.of(currentPage-1,pageSize));
   }
 

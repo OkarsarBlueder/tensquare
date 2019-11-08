@@ -9,6 +9,7 @@ import com.base.pojo.Label;
 import com.base.service.LabelService;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin            // 跨域
 @RestController
@@ -50,13 +51,13 @@ public class LabelController {
 
 
   @PostMapping("/search")
-  public Result findSearch(@RequestBody Label label){
+  public Result findSearch(@RequestBody Map label){
     List<Label> labels = labelService.findSearch(label);
     return new Result(true,StatusCode.OK,"查询成功",labels);
   }
 
   @PostMapping("/search/{page}/{size}")
-  public Result pageQuery(@RequestBody Label label,@PathVariable("page") int currentPage,@PathVariable("size") int pageSize){
+  public Result pageQuery(@RequestBody Map label,@PathVariable("page") int currentPage,@PathVariable("size") int pageSize){
     Page<Label> pageData = labelService.pageQuery(label,currentPage,pageSize);
     return new Result(true,StatusCode.OK,"查询成功",pageData.getContent());
   }
