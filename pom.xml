@@ -21,6 +21,7 @@
         <module>tensquare_spit</module>
         <module>tensquare_user</module>
         <module>tensquare_web</module>
+        <module>tensquare-article</module>
     </modules>
     <packaging>pom</packaging>
     <parent>
