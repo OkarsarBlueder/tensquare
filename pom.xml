@@ -22,6 +22,7 @@
         <module>tensquare_user</module>
         <module>tensquare_web</module>
         <module>tensquare-article</module>
+        <module>tensquare-rabbit</module>
     </modules>
     <packaging>pom</packaging>
     <parent>
