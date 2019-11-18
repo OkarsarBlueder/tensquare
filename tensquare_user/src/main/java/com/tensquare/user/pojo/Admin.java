@@ -1,8 +1,15 @@
 package com.tensquare.user.pojo;
 
+import lombok.Data;
+
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
+@Data
+@Entity
+@Table(name = "tb_user")
 public class Admin implements Serializable {
 
   @Id
