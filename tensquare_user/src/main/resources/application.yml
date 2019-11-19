@@ -10,4 +10,6 @@ spring:
     password: root
   jpa:
     show-sql: true
-    database: mysql
+    database: MySQL
+  redis:
+    host: 120.24.56.191
